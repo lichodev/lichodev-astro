@@ -4,25 +4,26 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 
-const { title, description } = Astro.props;
+type Props = {
+  title?: string;
+  description?: string;
+};
+const { title, description } = Astro.props as Props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <BaseHead
-      title={title ?? SITE_TITLE}
+      title={title ? `${title} - ${SITE_TITLE}` : SITE_TITLE}
       description={description ?? SITE_DESCRIPTION}
     />
   </head>
-  <body class="bg-background-900 text-text-50">
+  <body class="bg-background-950 text-text-50">
     <div class="m-auto max-w-[1000px]">
-      <Header />
-
       <div class="px-6 lg:px-0 max-w-none prose prose-invert mt-5">
         <slot />
       </div>
-
       <Footer />
     </div>
   </body>
