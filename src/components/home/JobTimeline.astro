@@ -20,7 +20,7 @@ const { job, at, atUrl, date } = Astro.props as Props;
     >
   </h3>
   <span class="text-text-600">{date}</span>
-  <div class="prose job-info">
+  <div class="prose job-info pt-2">
     <slot />
   </div>
 </article>
@@ -34,6 +34,15 @@ const { job, at, atUrl, date } = Astro.props as Props;
 </style>
 
 <style is:global>
+  .job-info,
+  .job-info * {
+    max-width: none;
+  }
+
+  .job-info p,
+  .job-info ul {
+    @apply m-0 mb-2;
+  }
   .job-info ul li {
     margin: 0;
   }
