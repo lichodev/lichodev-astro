@@ -8,10 +8,10 @@ type Props = {
 const { job, at, atUrl, date } = Astro.props as Props;
 ---
 
-<div class="mb-4">
-  <h3 class="m-0">
+<article class="mb-4">
+  <h3>
     {job}
-    <span class="text-text-600"
+    <span class="font-semibold text-text-600"
       >@ <a
         href={atUrl}
         target="_blank"
@@ -20,7 +20,21 @@ const { job, at, atUrl, date } = Astro.props as Props;
     >
   </h3>
   <span class="text-text-600">{date}</span>
-  <ul class="text-lg m-0">
+  <div class="prose job-info">
     <slot />
-  </ul>
-</div>
+  </div>
+</article>
+
+<style>
+  @media (prefers-color-scheme: dark) {
+    div {
+      @apply prose-invert;
+    }
+  }
+</style>
+
+<style is:global>
+  .job-info ul li {
+    margin: 0;
+  }
+</style>
