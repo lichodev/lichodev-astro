@@ -2,50 +2,92 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import JobIcon from "../components/icons/JobIcon.astro";
 import GitIcon from "../components/icons/GitIcon.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import JobTimeline from "../components/JobTimeline.astro";
+import ProjectCard from "../components/home/ProjectCard.astro";
+import JobTimeline from "../components/home/JobTimeline.astro";
 import MailIcon from "../components/icons/MailIcon.astro";
+import SocialBadge from "../components/home/SocialBadge.astro";
+import GitHubIcon from "../components/icons/GitHubIcon.astro";
+import LinkedinIcon from "../components/icons/LinkedinIcon.astro";
+import MailboxIcon from "../components/icons/MailboxIcon.astro";
 ---
 
 <BaseLayout title="Lisandro Marchionni">
   <main>
-    <h1>Hola! Soy <span class="text-primary-500">Licha</span></h1>
-    <span>Lisandro Marchionni</span>
-    <!-- Experiencia -->
-    <h2 class="mb-2">Experiencia laboral<JobIcon /></h2>
+    <!-- Hero -->
     <section>
+      <h1 class="text-6xl font-bold">
+        Hola! Soy <span class="text-primary-500">Licha</span>
+      </h1>
+      <h2 class="text-3xl font-bold text-primary-700">Lisandro Marchionni</h2>
+      <h3 class="text-xl font-medium mt-3">
+        Estudiante universitario. DevOps y desarrollo backend.
+      </h3>
+      <div class="flex gap-1 mt-3">
+        <SocialBadge href="https://github.com/lichodev">
+          <GitHubIcon /> GitHub
+        </SocialBadge>
+        <SocialBadge href="https://www.linkedin.com/in/lisandromarcho">
+          <LinkedinIcon />
+           LinkedIn
+        </SocialBadge>
+        <SocialBadge href="mailto:marchionni.lisandro@gmail.com">
+          <MailboxIcon />
+           marchionni.lisandro@gmail.com
+        </SocialBadge>
+      </div>
+    </section>
+
+    <!-- Experiencia -->
+    <section class="mt-5">
+      <header class="flex flex-row items-center mb-3">
+        <JobIcon />
+        <h2 id="jobs" class="text-2xl font-semibold">Experiencia laboral</h2>
+      </header>
       <JobTimeline
         job="Soporte IT"
         at="UNICEN.edu.ar"
         atUrl="https://www.unicen.edu.ar"
         date="octubre 2023 - actualidad"
       >
-        <li>Instalación y mantenimiento de dispositos VoIP</li>
-        <li>Mantenimiento de estaciones de trabajo</li>
-        <li>
-          Administración y configuración de routers y switch administrables
-        </li>
-        <li>
-          Mantenimiento y gestión de diferentes clusters de virtualización como
-          Ganeti (Xen) y Kubernetes
-        </li>
-        <li>Adminsitración de servidor DNS</li>
-        <li>Bash scripting</li>
-        <li>Linux</li>
+        <ul>
+          <li>Instalación y mantenimiento de dispositos VoIP</li>
+          <li>Mantenimiento de estaciones de trabajo</li>
+          <li>
+            Administración y configuración de routers y switch administrables
+          </li>
+          <li>
+            Mantenimiento y gestión de diferentes clusters de virtualización
+            como Ganeti (Xen) y Kubernetes
+          </li>
+          <li>Adminsitración de servidor DNS</li>
+          <li>Bash scripting</li>
+          <li>Linux</li>
+        </ul>
       </JobTimeline>
     </section>
+
     <!-- Proyectos -->
-    <h2>Proyectos <GitIcon /></h2>
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
-      <ProjectCard />
+    <section class="mt-5">
+      <header class="flex flex-row items-center mb-3">
+        <GitIcon />
+        <h2 id="projects" class="text-2xl font-semibold">Mis poyectos</h2>
+      </header>
+
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <ProjectCard />
+        <ProjectCard />
+        <ProjectCard />
+        <ProjectCard />
+        <ProjectCard />
+      </section>
     </section>
+
     <!-- Contacto -->
-    <section>
-      <h2>Contacto <MailIcon /></h2>
+    <section class="mt-5">
+      <header class="flex flex-row items-center mb-3">
+        <MailIcon />
+        <h2 id="contact" class="text-2xl font-semibold">Contacto</h2>
+      </header>
     </section>
   </main>
 </BaseLayout>
