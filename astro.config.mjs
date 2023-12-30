@@ -5,6 +5,6 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://beta-lichodev.vercel.app",
+  site: "https://www.lichodev.com.ar",
   integrations: [mdx(), sitemap(), tailwind()],
 });
