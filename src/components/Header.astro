@@ -3,7 +3,7 @@ import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header
-  class="sticky top-5 mx-3 lg:mx-0 px-5 py-2 border-2 border-slate-700 rounded-md backdrop-blur-sm shadow-sm shadow-slate-800"
+  class="sticky top-5 px-5 py-2 mx-2 lg:mx-auto max-w-[1000px] rounded-md"
 >
   <nav class="flex justify-between items-center">
     <a href="/">
@@ -18,3 +18,17 @@ import HeaderLink from "./HeaderLink.astro";
     </div>
   </nav>
 </header>
+
+<style>
+  header {
+    animation: scrollAnimation linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes scrollAnimation {
+    to {
+      @apply border-2 border-slate-700 shadow-sm shadow-slate-800  backdrop-blur-sm;
+    }
+  }
+</style>

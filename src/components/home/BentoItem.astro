@@ -1,0 +1,12 @@
+---
+interface Props {
+  className: string;
+}
+
+const { className } = Astro.props;
+---
+
+<article class=`${className} overflow-hidden h-[250px] rounded-lg bg-red-400`>
+  <img class="w-full h-full" src="/portadas/licho-tk.png" alt="" />
+  <slot />
+</article>
