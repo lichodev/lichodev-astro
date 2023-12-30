@@ -4,6 +4,7 @@
     "strictNullChecks": true,
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "baseUrl": "."
   }
 }
