@@ -1,0 +1,31 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+---
+
+<header
+  class="sticky flex justify-between top-5 px-5 py-2 mx-2 lg:mx-auto z-10 max-w-[1000px] rounded-md border-slate-700 backdrop-blur-sm dark:bg-zinc-800/40 bg-white/70"
+>
+  <img
+    class="rounded-full h-12 shadow-lg"
+    src="https://avatars.githubusercontent.com/u/24478906"
+    alt="Foto de perfil de lichodev de GitHub"
+  />
+  <nav class="flex justify-end items-center">
+    <HeaderLink href="/">Home</HeaderLink>
+    <HeaderLink href="/blog">Blog</HeaderLink>
+  </nav>
+</header>
+
+<style>
+  header {
+    animation: scrollAnimation linear both;
+    animation-timeline: scroll();
+    animation-range: 20px 200px;
+  }
+
+  @keyframes scrollAnimation {
+    to {
+      @apply border-2  shadow-sm shadow-slate-800;
+    }
+  }
+</style>

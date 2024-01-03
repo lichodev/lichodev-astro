@@ -1,7 +1,7 @@
 ---
 import BaseHead from "@/components/BaseHead.astro";
 import Footer from "@/components/Footer.astro";
-import Header from "@/components/Header.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 
 type Props = {
@@ -20,8 +20,8 @@ const { title, description } = Astro.props as Props;
     />
   </head>
   <body>
-    <Header />
-    <main class="m-auto max-w-[900px] px-6 lg:px-0 mt-10">
+    <SiteHeader />
+    <main class="m-auto max-w-[750px] px-6 lg:px-0 mt-10">
       <slot />
     </main>
     <Footer />
