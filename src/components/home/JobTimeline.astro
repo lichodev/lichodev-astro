@@ -1,25 +1,27 @@
 ---
-type Props = {
+interface Props {
   job: string;
   at: string;
   atUrl: string;
   date: string;
-};
-const { job, at, atUrl, date } = Astro.props as Props;
+}
+
+const { job, at, atUrl, date } = Astro.props;
 ---
 
-<article class="mb-4">
-  <h3>
+<article class="mb-4 max-w-[70ch]">
+  <h3 class="">
     {job}
-    <span class="font-semibold text-text-600"
+    <span class="font-semibold text-text-600 dark:text-text-400"
       >@ <a
         href={atUrl}
         target="_blank"
-        class="text-text-600 no-underline hover:underline">{at}</a
+        class="text-text-600 dark:text-text-400 no-underline hover:underline"
+        >{at}</a
       ></span
     >
   </h3>
-  <span class="text-text-600">{date}</span>
+  <span class="text-text-600 dark:text-text-400">{date}</span>
   <div class="prose job-info pt-2">
     <slot />
   </div>

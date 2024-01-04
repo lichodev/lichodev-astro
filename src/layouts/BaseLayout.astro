@@ -4,11 +4,12 @@ import Footer from "@/components/Footer.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 
-type Props = {
+interface Props {
   title?: string;
   description?: string;
-};
-const { title, description } = Astro.props as Props;
+}
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
