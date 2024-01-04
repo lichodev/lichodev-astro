@@ -10,7 +10,7 @@ const { job, at, atUrl, date } = Astro.props;
 ---
 
 <article class="mb-4 max-w-[70ch]">
-  <h3 class="">
+  <h3>
     {job}
     <span class="font-semibold text-text-600 dark:text-text-400"
       >@ <a
@@ -22,7 +22,7 @@ const { job, at, atUrl, date } = Astro.props;
     >
   </h3>
   <span class="text-text-600 dark:text-text-400">{date}</span>
-  <div class="prose job-info pt-2">
+  <div class="prose prose-stone job-info pt-2">
     <slot />
   </div>
 </article>
@@ -35,7 +35,7 @@ const { job, at, atUrl, date } = Astro.props;
 
   .job-info p,
   .job-info ul {
-    @apply m-0 mb-2;
+    @apply m-0 mb-1;
   }
   .job-info ul li {
     margin: 0;
