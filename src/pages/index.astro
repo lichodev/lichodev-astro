@@ -14,24 +14,26 @@ import MailboxIcon from "@/components/icons/MailboxIcon.astro";
 <BaseLayout title="Lisandro Marchionni">
   <!-- Hero -->
   <section>
-    <h1 class="text-6xl font-bold">
-      Hola! Soy <span class="text-primary-500">Licha</span>
-    </h1>
-    <h2 class="text-3xl font-bold text-primary-700">Lisandro Marchionni</h2>
-    <h3 class="text-xl font-medium mt-3">
-      Estudiante universitario. DevOps y desarrollo backend.
-    </h3>
-    <div class="flex flex-wrap gap-1 mt-3">
+    <p class="text-3xl font-medium">Hola! Mi nombre es</p>
+    <h1 class="text-6xl font-bold text-primary-500">Lisandro Marchionni</h1>
+    <p class="text-xl my-4">
+      <strong>DevOps y desarrollo fullstack.</strong> Aprendiendo sobre el Cloud
+      y la infraestructura sobre Kubernetes. Estudiante universitario.
+    </p>
+    <div class="flex flex-wrap gap-3">
       <SocialBadge href="https://github.com/lichodev">
         <GitHubIcon /> GitHub
       </SocialBadge>
       <SocialBadge href="https://www.linkedin.com/in/lisandromarcho">
         <LinkedinIcon />
-         LinkedIn
+        LinkedIn
       </SocialBadge>
       <SocialBadge href="mailto:marchionni.lisandro@gmail.com">
         <MailboxIcon />
-         marchionni.lisandro@gmail.com
+        marchionni.lisandro@gmail.com
+      </SocialBadge>
+      <SocialBadge href="/files/cv.pdf">
+        <DownloadFileIcon /> Descargar CV
       </SocialBadge>
     </div>
   </section>
