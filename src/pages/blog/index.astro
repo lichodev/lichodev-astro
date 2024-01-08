@@ -13,10 +13,10 @@ const posts = (await getCollection("blog")).sort(
     <h2 id="contact" class="text-2xl font-semibold mb-10">Publicaciones</h2>
     {
       posts.map((post) => (
-        <article class="flex gap-5">
+        <article class="flex flex-col md:flex-row gap-5">
           <a href={`/blog/${post.slug}/`} class="w-full">
             <img
-              class="rounded"
+              class="rounded mx-auto"
               width={400}
               height={120}
               src={post.data.heroImage}
