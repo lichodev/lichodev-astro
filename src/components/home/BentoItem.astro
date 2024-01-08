@@ -1,11 +1,14 @@
 ---
+import ExternalLink from "../icons/ExternalLink.astro";
 interface Props {
   "lg:size"?: 4 | 5 | 6 | 7 | 8;
   title: string;
+  href: string;
+  newTab?: boolean;
   img: string;
 }
 
-const { "lg:size": size, title, img } = Astro.props;
+const { "lg:size": size, title, img, href, newTab = false } = Astro.props;
 
 const DEFAULT_SIZE = "md:col-span-6 col-span-12";
 
@@ -27,8 +30,17 @@ const COLUMN_SIZES = {
   >
   </div>
   <div class="absolute w-full p-4 bottom-0 text-white">
-    <h3 class="font-semibold uppercase">{title}</h3>
-    <div class="flex flex-wrap">
+    <h3 class="font-semibold uppercase">
+      <a
+        href={href}
+        target={newTab ? "_blank" : "_self"}
+        class="flex gap-2 items-center"
+      >
+        {title}
+        {newTab && <ExternalLink />}
+      </a>
+    </h3>
+    <div class="flex mt-2 gap-2">
       <slot />
     </div>
   </div>

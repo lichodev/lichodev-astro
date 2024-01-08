@@ -1,6 +1,11 @@
 ---
 import BentoItem from "./BentoItem.astro";
 import GitIcon from "@/components/icons/GitIcon.astro";
+
+import AstroIcon from "@/components/icons/techs/AstroIcon.astro";
+import VercelIcon from "../icons/techs/VercelIcon.astro";
+import BentoIcon from "./BentoIcon.astro";
+import NextJsIcon from "../icons/techs/NextJsIcon.astro";
 ---
 
 <section class="mt-16">
@@ -10,12 +15,42 @@ import GitIcon from "@/components/icons/GitIcon.astro";
   </header>
 
   <div class="grid grid-cols-12 gap-4 top">
-    <BentoItem img="/bento/licho-tk.jpg" title="Acortador de Url" lg:size={7} />
+    <BentoItem
+      img="/bento/licho-tk.jpg"
+      title="Acortador de Url"
+      lg:size={6}
+      href="https://licho.tk"
+      newTab={true}
+    >
+      <BentoIcon>
+        <NextJsIcon /> NextJs
+      </BentoIcon>
+      <BentoIcon>
+        <VercelIcon /> Vercel
+      </BentoIcon>
+    </BentoItem>
+
     <BentoItem
       img="/bento/lichodev-blog.jpg"
       title="lichodev Blog"
-      lg:size={5}
-    />
-    <BentoItem img="/bento/lichodev-2024.jpg" title="Esta página!" />
+      lg:size={6}
+      href="/blog"
+    >
+      <BentoIcon>
+        <AstroIcon /> Astro
+      </BentoIcon>
+      <BentoIcon>
+        <VercelIcon /> Vercel
+      </BentoIcon>
+    </BentoItem>
+
+    <BentoItem img="/bento/lichodev-2024.jpg" title="Esta página!" href="/">
+      <BentoIcon>
+        <AstroIcon /> Astro
+      </BentoIcon>
+      <BentoIcon>
+        <VercelIcon /> Vercel
+      </BentoIcon>
+    </BentoItem>
   </div>
 </section>
