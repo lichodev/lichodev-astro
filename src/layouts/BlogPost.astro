@@ -2,33 +2,43 @@
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/blog/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
+import ArrowLeft from "@/components/icons/ArrowLeft.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, heroImage, updatedDate } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
-  <article>
-    <div class="hero-image mb-6" transition:name="head">
-      {heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
-    </div>
-    <div class="prose">
-      <div class="title">
-        <div class="date">
-          <FormattedDate date={pubDate} />
-          {
-            updatedDate && (
-              <div class="last-updated-on">
-                Last updated on <FormattedDate date={updatedDate} />
-              </div>
-            )
-          }
-        </div>
-        <h1>{title}</h1>
-        <hr />
-      </div>
-      <slot />
-    </div>
+<BaseLayout title={title} description={description} wide={true}>
+  <a href="/blog" class="flex items-center gap-2 mt-16">
+    <ArrowLeft /> Todos las publicaciones</a
+  >
+  <article class="my-6 prose max-w-none">
+    {
+      heroImage && (
+        <img
+          transition:name="head"
+          class="rounded-lg mb-6"
+          width={1020}
+          height={510}
+          src={heroImage}
+          alt=""
+        />
+      )
+    }
+    <p class="italic">
+      <FormattedDate date={pubDate} />
+      {
+        updatedDate && (
+          <span>
+            - Actualizado el
+            <FormattedDate date={updatedDate} />
+          </span>
+        )
+      }
+    </p>
+    <h1>{title}</h1>
+    <hr />
+    <slot />
   </article>
 </BaseLayout>

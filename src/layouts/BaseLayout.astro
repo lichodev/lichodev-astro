@@ -7,9 +7,12 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 interface Props {
   title?: string;
   description?: string;
+  wide?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, wide = false } = Astro.props;
+
+const mainWidth = wide ? "max-w-[900px]" : "max-w-[750px]";
 ---
 
 <!doctype html>
@@ -22,7 +25,7 @@ const { title, description } = Astro.props;
   </head>
   <body>
     <SiteHeader />
-    <main class="m-auto max-w-[750px] px-6 lg:px-0 mt-10">
+    <main class=`m-auto ${mainWidth} px-6 lg:px-0 mt-10`>
       <slot />
     </main>
     <Footer />
