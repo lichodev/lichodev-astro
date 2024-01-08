@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import JobIcon from "@/components/icons/JobIcon.astro";
-import GitIcon from "@/components/icons/GitIcon.astro";
 import ProjectsBento from "@/components/home/ProjectsBento.astro";
 import JobTimeline from "@/components/home/JobTimeline.astro";
 import MailIcon from "@/components/icons/MailIcon.astro";
@@ -10,7 +9,7 @@ import GitHubIcon from "@/components/icons/GitHubIcon.astro";
 import LinkedinIcon from "@/components/icons/LinkedinIcon.astro";
 import MailboxIcon from "@/components/icons/MailboxIcon.astro";
 import DownloadFileIcon from "@/components/icons/DownloadFileIcon.astro";
-import StudiesIcon from "@/components/icons/StudiesIcon.astro";
+import BookIcon from "@/components/icons/BookIcon.astro";
 ---
 
 <BaseLayout title="Lisandro Marchionni">
@@ -41,7 +40,7 @@ import StudiesIcon from "@/components/icons/StudiesIcon.astro";
   </section>
 
   <!-- Experiencia -->
-  <section class="mt-16">
+  <section class="my-16">
     <header class="flex flex-row items-center mb-3">
       <JobIcon />
       <h2 id="jobs" class="text-2xl font-semibold">Experiencia laboral</h2>
@@ -74,9 +73,18 @@ import StudiesIcon from "@/components/icons/StudiesIcon.astro";
     </JobTimeline>
   </section>
 
+  <!-- Estudios -->
+  <section class="my-16">
+    <header class="flex flex-row items-center mb-3">
+      <BookIcon />
+      <h2 id="studies" class="text-2xl font-semibold">Estudios</h2>
+    </header>
+  </section>
+
   <ProjectsBento />
+
   <!-- Contacto -->
-  <section class="mt-16">
+  <section class="my-16">
     <header class="flex flex-row items-center mb-3">
       <MailIcon />
       <h2 id="contact" class="text-2xl font-semibold">Contacto</h2>
