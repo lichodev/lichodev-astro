@@ -4,11 +4,10 @@ interface Props {
   "lg:size"?: 4 | 5 | 6 | 7 | 8;
   title: string;
   href: string;
-  newTab?: boolean;
   img: string;
 }
 
-const { "lg:size": size, title, img, href, newTab = false } = Astro.props;
+const { "lg:size": size, title, img, href } = Astro.props;
 
 const DEFAULT_SIZE = "md:col-span-6 col-span-12";
 
@@ -21,27 +20,20 @@ const COLUMN_SIZES = {
 };
 ---
 
-<article
-  class=`${size ? COLUMN_SIZES[size] : "col-span-12"} overflow-hidden relative h-[250px] rounded-lg bg-center`
-  style=`background-image: url(${img});`
->
+<article class=`${size ? COLUMN_SIZES[size] : "col-span-12"} relative`>
+  <img src={img} class="w-full h-[250px] absolute blur-sm" />
   <div
-    class="absolute w-full h-full bg-gradient-to-b from-transparent from-50% to-gray-950 -z-10"
+    class="h-[250px] bg-center rounded-lg relative w-full text-white"
+    style=`background-image: url(${img});`
   >
-  </div>
-  <div class="absolute w-full p-4 bottom-0 text-white">
-    <h3 class="font-semibold uppercase">
-      <a
-        href={href}
-        target={newTab ? "_blank" : "_self"}
-        class="flex gap-2 items-center"
-      >
+    <h3 class="font-semibold uppercase absolute left-4 bottom-4">
+      <a href={href} target="_blank" class="flex gap-2 items-center">
         {title}
-        {newTab && <ExternalLink />}
+        <ExternalLink />
       </a>
     </h3>
-    <div class="flex mt-2 gap-2">
-      <slot />
-    </div>
+  </div>
+  <div class="flex justify-center gap-2 pt-4">
+    <slot />
   </div>
 </article>
