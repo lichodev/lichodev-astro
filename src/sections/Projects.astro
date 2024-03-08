@@ -5,11 +5,36 @@ import GitIcon from "@/components/icons/GitIcon.astro";
 import VercelIcon from "@/components/icons/techs/VercelIcon.astro";
 import BentoIcon from "@/components/BentoIcon.astro";
 import NextJsIcon from "@/components/icons/techs/NextJsIcon.astro";
+import SectionHeaderIcon from "@/components/SectionHeaderIcon.astro";
 ---
 
 <section class="mt-16">
   <header class="flex flex-row items-center mb-4">
-    <GitIcon />
+    <SectionHeaderIcon>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="p-1"
+        width={40}
+        height={40}
+        viewBox="0 0 24 24"
+        stroke-width={1.5}
+        stroke="white"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M16 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+        <path d="M12 8m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+        <path d="M12 16m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+        <path d="M12 15v-6"></path>
+        <path d="M15 11l-2 -2"></path>
+        <path d="M11 7l-1.9 -1.9"></path>
+        <path
+          d="M13.446 2.6l7.955 7.954a2.045 2.045 0 0 1 0 2.892l-7.955 7.955a2.045 2.045 0 0 1 -2.892 0l-7.955 -7.955a2.045 2.045 0 0 1 0 -2.892l7.955 -7.955a2.045 2.045 0 0 1 2.892 0z"
+        ></path>
+      </svg>
+    </SectionHeaderIcon>
     <h2 id="projects" class="text-2xl font-semibold">Mis poyectos</h2>
   </header>
 
