@@ -1,0 +1,36 @@
+---
+import JobIcon from "@/components/icons/JobIcon.astro";
+import JobTimeline from "@/components/JobTimeline.astro";
+---
+
+<section class="my-16">
+  <header class="flex flex-row items-center mb-3">
+    <JobIcon />
+    <h2 id="jobs" class="text-2xl font-semibold">Experiencia laboral</h2>
+  </header>
+
+  <JobTimeline
+    job="Soporte Infraestructura"
+    at="UNICEN.edu.ar (Campus Tandil)"
+    atUrl="https://www.unicen.edu.ar"
+    date="octubre 2023 - actualidad"
+  >
+    <p>
+      Trabajo con usuarios finales y las distintas Facultades haciendo soporte.
+      Realizo mantenimiento IT en áreas comunes y en el Centro de datos.
+    </p>
+    <p class="font-semibold">Tareas puntuales</p>
+    <ul>
+      <li>
+        Mantenimiento y gestión de diferentes clusters de virtualización como
+        Ganeti (Xen) y Kubernetes
+      </li>
+      <li>Despliegue de servicios en las plataformas mencionadas</li>
+      <li>Adminsitración de servidor DNS (bind)</li>
+      <li>Administración y configuración de routers y switchs</li>
+      <li>Instalación y mantenimiento de dispositos VoIP</li>
+      <li>Mantenimiento de estaciones de trabajo</li>
+      <li>Bash scripting</li>
+    </ul>
+  </JobTimeline>
+</section>
