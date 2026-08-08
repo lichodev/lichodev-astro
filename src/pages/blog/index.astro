@@ -10,31 +10,33 @@ const posts = (await getCollection("blog")).sort(
 
 <BaseLayout wide={true}>
   <section class="my-16">
-    <h2 id="contact" class="text-2xl font-semibold mb-10">Publicaciones</h2>
-    {
-      posts.map((post) => (
-        <article class="flex flex-col md:flex-row gap-5">
-          <a href={`/blog/${post.slug}/`} class="w-full">
-            <img
-              class="rounded mx-auto"
-              width={400}
-              height={120}
-              src={post.data.heroImage}
-              alt={post.data.title}
-              transition:name="head"
-            />
-          </a>
-          <div>
-            <a href={`/blog/${post.slug}/`}>
-              <h3 class="text-2xl font-semibold">{post.data.title}</h3>
-              <p class="italic">
+    <h2 id="blog" class="text-2xl font-bold mb-10">Publicaciones</h2>
+    <div class="flex flex-col gap-4">
+      {
+        posts.map((post) => (
+          <article class="flex gap-4 rounded-2xl border border-text-200 dark:border-text-800 bg-background-50 dark:bg-background-900 p-4">
+            <a href={`/blog/${post.slug}/`} class="shrink-0">
+              <img
+                class="rounded-lg w-[120px] h-[80px] object-cover"
+                width={120}
+                height={80}
+                src={post.data.heroImage}
+                alt={post.data.title}
+                transition:name="head"
+              />
+            </a>
+            <a href={`/blog/${post.slug}/`} class="min-w-0">
+              <h3 class="font-bold mb-1">{post.data.title}</h3>
+              <p class="font-mono text-xs text-text-600 dark:text-text-400 mb-1.5">
                 <FormattedDate date={post.data.pubDate} />
               </p>
-              <p class="mt-4">{post.data.description}</p>
+              <p class="text-sm text-text-600 dark:text-text-400">
+                {post.data.description}
+              </p>
             </a>
-          </div>
-        </article>
-      ))
-    }
+          </article>
+        ))
+      }
+    </div>
   </section>
 </BaseLayout>

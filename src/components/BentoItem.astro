@@ -20,20 +20,27 @@ const COLUMN_SIZES = {
 };
 ---
 
-<article class=`${size ? COLUMN_SIZES[size] : "col-span-12"} relative`>
-  <img src={img} class="w-full h-[250px] absolute blur-sm" />
-  <div
-    class="h-[250px] bg-center rounded-lg relative w-full text-white"
+<article
+  class=`${size ? COLUMN_SIZES[size] : "col-span-12"} rounded-2xl overflow-hidden border border-text-200 dark:border-text-800 bg-background-50 dark:bg-background-900`
+>
+  <a
+    href={href}
+    target="_blank"
+    role="img"
+    aria-label={title}
+    class="block h-[160px] bg-center bg-cover"
     style=`background-image: url(${img});`
   >
-    <h3 class="font-semibold uppercase absolute left-4 bottom-4">
+  </a>
+  <div class="p-4">
+    <h3 class="font-bold mb-2.5">
       <a href={href} target="_blank" class="flex gap-2 items-center">
         {title}
         <ExternalLink />
       </a>
     </h3>
-  </div>
-  <div class="flex justify-center gap-2 pt-4">
-    <slot />
+    <div class="flex flex-wrap gap-1.5">
+      <slot />
+    </div>
   </div>
 </article>

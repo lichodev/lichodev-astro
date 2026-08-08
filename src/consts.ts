@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = "lichodev.com.ar";
 export const SITE_DESCRIPTION =
-  "DevOps e infraestructura. Desarrollo de aplicaciones web para problemas específicas.";
+  "Site Reliability Engineer. Redes, infraestructura virtualizada y automatización.";

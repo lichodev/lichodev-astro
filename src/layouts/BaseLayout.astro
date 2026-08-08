@@ -12,11 +12,14 @@ interface Props {
 
 const { title, description, wide = false } = Astro.props;
 
-const mainWidth = wide ? "max-w-[900px]" : "max-w-[750px]";
+const mainWidth = wide ? "max-w-[1080px]" : "max-w-[750px]";
 ---
 
 <!doctype html>
-<html lang="es" class="dark:bg-zinc-800">
+<html
+  lang="es"
+  class="font-sans bg-background-50 text-text-900 dark:bg-background-950 dark:text-text-50"
+>
   <head>
     <BaseHead
       title={title ? `${title} - ${SITE_TITLE}` : SITE_TITLE}

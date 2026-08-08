@@ -3,30 +3,39 @@ import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header
-  class="sticky flex justify-between top-5 px-5 py-2 mx-2 lg:mx-auto z-10 max-w-[1000px] rounded-md border-zinc-700 backdrop-blur-sm dark:bg-zinc-800/70 bg-white/70"
+  class="max-w-[1080px] mx-auto px-6 lg:px-0 pt-7 mb-[72px] flex justify-between items-center gap-4 flex-wrap"
 >
-  <img
-    class="rounded-full h-12 shadow-lg"
-    src="https://avatars.githubusercontent.com/u/24478906"
-    alt="Foto de perfil de lichodev de GitHub"
-    aria-hidden="true"
-  />
-  <nav class="flex justify-end items-center">
-    <HeaderLink href="/">Inicio</HeaderLink>
-    <HeaderLink href="/blog">Blog</HeaderLink>
+  <a href="/" class="flex items-center gap-3">
+    <img
+      class="w-[34px] h-[34px] rounded-full border border-text-200 dark:border-text-800 object-cover"
+      src="https://avatars.githubusercontent.com/u/24478906"
+      alt="Foto de perfil de lichodev de GitHub"
+      aria-hidden="true"
+    />
+    <span class="font-mono text-sm text-text-600 dark:text-text-400"
+      >lichodev.com.ar</span
+    >
+  </a>
+  <nav class="flex items-center gap-5 flex-wrap">
+    <a
+      href="/#experiencia"
+      class="text-sm text-text-600 dark:text-text-400 hover:text-text-950 dark:hover:text-text-50"
+      >Exp</a
+    >
+    <a
+      href="/#stack"
+      class="text-sm text-text-600 dark:text-text-400 hover:text-text-950 dark:hover:text-text-50"
+      >Stack</a
+    >
+    <a
+      href="/#contacto"
+      class="text-sm text-text-600 dark:text-text-400 hover:text-text-950 dark:hover:text-text-50"
+      >Contacto</a
+    >
+    <HeaderLink
+      href="/blog"
+      class="text-sm text-text-600 dark:text-text-400 hover:text-text-950 dark:hover:text-text-50"
+      >Blog</HeaderLink
+    >
   </nav>
 </header>
-
-<style>
-  header {
-    animation: scrollAnimation linear both;
-    animation-timeline: scroll();
-    animation-range: 20px 200px;
-  }
-
-  @keyframes scrollAnimation {
-    to {
-      @apply border-2  shadow-sm shadow-slate-800;
-    }
-  }
-</style>

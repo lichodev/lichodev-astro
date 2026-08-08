@@ -1,0 +1,46 @@
+---
+import TechTag from "@/components/TechTag.astro";
+
+const GROUPS = [
+  {
+    label: "Observabilidad y confiabilidad",
+    tags: ["Prometheus", "Grafana", "Loki", "Nagios"],
+  },
+  {
+    label: "Virtualización y contenedores",
+    tags: ["Kubernetes", "Proxmox VE", "Docker"],
+  },
+  {
+    label: "Redes",
+    tags: ["MikroTik / RouterOS", "OSPF", "BGP", "RIP", "IPv6 / túneles", "VLANs"],
+  },
+  {
+    label: "Sistemas, CI/CD e integraciones",
+    tags: ["Linux", "HA clustering", "Bash", "DNS", "GitLab CI/CD", "Git", "APIs (Moodle, SIU)"],
+  },
+];
+---
+
+<section id="stack">
+  <h2
+    class="text-2xl font-bold mb-6 pb-3 border-b border-text-200 dark:border-text-800"
+  >
+    Stack
+  </h2>
+  <div class="flex flex-col gap-[18px]">
+    {
+      GROUPS.map((group) => (
+        <div class="rounded-2xl border border-text-200 dark:border-text-800 bg-background-50 dark:bg-background-900 p-5">
+          <div class="font-mono text-xs tracking-[.06em] uppercase text-primary-500 mb-3.5">
+            {group.label}
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            {group.tags.map((tag) => (
+              <TechTag>{tag}</TechTag>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>

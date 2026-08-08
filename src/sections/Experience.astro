@@ -1,55 +1,105 @@
 ---
-import SectionHeaderIcon from "@/components/SectionHeaderIcon.astro";
 import JobTimeline from "@/components/JobTimeline.astro";
 ---
 
-<section class="my-16">
-  <header class="flex flex-row items-center mb-3">
-    <SectionHeaderIcon>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="p-1"
-        width={40}
-        height={40}
-        viewBox="0 0 24 24"
-        stroke-width={1.5}
-        stroke="white"
-        fill="none"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <path
-          d="M12 22l4 -4l-2.5 -11l.993 -2.649a1 1 0 0 0 -.936 -1.351h-3.114a1 1 0 0 0 -.936 1.351l.993 2.649l-2.5 11l4 4z"
-        ></path>
-        <path d="M10.5 7h3l5 5.5"></path>
-      </svg>
-    </SectionHeaderIcon>
-    <h2 id="jobs" class="text-2xl font-semibold">Experiencia</h2>
-  </header>
+<section id="experiencia">
+  <h2
+    class="text-2xl font-bold mb-7 pb-3 border-b border-text-200 dark:border-text-800"
+  >
+    Experiencia
+  </h2>
 
   <JobTimeline
-    job="Soporte Infraestructura"
-    at="UNICEN.edu.ar (Campus Tandil)"
+    job="Auxiliar de Soporte TI — Centro de Datos y Comunicaciones"
+    at="UNICEN — Rectorado"
     atUrl="https://www.unicen.edu.ar"
-    date="octubre 2023 - actualidad"
+    date="octubre 2023 — actualidad"
   >
-    <p>
-      Trabajo con usuarios finales y las distintas Facultades haciendo soporte.
-      Realizo mantenimiento IT en áreas comunes y en el Centro de datos.
-    </p>
-    <p class="font-semibold">Tareas puntuales</p>
     <ul>
       <li>
-        Mantenimiento y gestión de diferentes clusters de virtualización como
-        Ganeti (Xen) y Kubernetes
+        Soporte y monitoreo de la red que vincula el centro de datos con
+        distintas dependencias.
       </li>
-      <li>Despliegue de servicios en las plataformas mencionadas</li>
-      <li>Adminsitración de servidor DNS (bind)</li>
-      <li>Administración y configuración de routers y switchs</li>
-      <li>Instalación y mantenimiento de dispositos VoIP</li>
-      <li>Mantenimiento de estaciones de trabajo</li>
-      <li>Bash scripting</li>
+      <li>
+        Opero entornos virtualizados y en contenedores, cubriendo el ciclo de
+        vida completo de los servicios.
+      </li>
+      <li>
+        Monitoreo con Prometheus, Grafana, Loki y Nagios: métricas, tableros y
+        logs centralizados.
+      </li>
+      <li>
+        CI/CD sobre GitLab: compilación, testing y despliegue de aplicaciones
+        internas.
+      </li>
+      <li>
+        Routers de frontera MikroTik: ruteo, VLANs y direccionamiento
+        IPv4/IPv6.
+      </li>
+    </ul>
+  </JobTimeline>
+
+  <JobTimeline
+    job="Administrador de Infraestructura de TI"
+    at="ábaco informática"
+    date="septiembre 2025 — actualidad"
+  >
+    <ul>
+      <li>
+        Administro la infraestructura de TI de la empresa: servidores,
+        servicios y conectividad.
+      </li>
+      <li>
+        Mantenimiento, actualización y hardening sobre servidores Linux y
+        entornos virtualizados.
+      </li>
+      <li>
+        Documento configuraciones y procedimientos para estandarizar la
+        respuesta ante incidentes.
+      </li>
+    </ul>
+  </JobTimeline>
+
+  <JobTimeline
+    job="Ayudante de cátedra"
+    at="UNICEN — Facultad de Ciencias Exactas"
+    atUrl="https://www.unicen.edu.ar"
+    date="marzo 2024 — actualidad"
+  >
+    <ul>
+      <li>
+        Diseño de Redes Distribuidas: IPv4 con ruteo dinámico OSPF, RIP y BGP,
+        redes y túneles IPv6.
+      </li>
+      <li>
+        Programación 1: fundamentos, estructuras de control, funciones y
+        estructuras de datos.
+      </li>
+      <li>
+        Elaboro material práctico y acompaño a estudiantes en la resolución
+        de laboratorios.
+      </li>
+    </ul>
+  </JobTimeline>
+
+  <JobTimeline
+    job="Administrador de Sistemas"
+    at="Universidad Nacional del Sur"
+    date="marzo 2025 — diciembre 2025"
+  >
+    <ul>
+      <li>
+        Administré entornos Kubernetes para el despliegue y operación de los
+        sistemas SIU.
+      </li>
+      <li>
+        Implementé integraciones entre Moodle y sistemas propios,
+        automatizando el intercambio de datos.
+      </li>
+      <li>
+        Definí procedimientos de despliegue reproducibles para reducir
+        tiempos de puesta en producción.
+      </li>
     </ul>
   </JobTimeline>
 </section>

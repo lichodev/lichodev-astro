@@ -2,16 +2,20 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 import Hero from "@/sections/Hero.astro";
+import Capabilities from "@/sections/Capabilities.astro";
+import BlogPreview from "@/sections/BlogPreview.astro";
 import Experience from "@/sections/Experience.astro";
-import Studies from "@/sections/Studies.astro";
-import Projects from "@/sections/Projects.astro";
+import Stack from "@/sections/Stack.astro";
 import Contact from "@/sections/Contact.astro";
 ---
 
-<BaseLayout title="Lisandro Marchionni">
+<BaseLayout title="Lisandro Marchionni" wide={true}>
   <Hero />
-  <Experience />
-  <Studies />
-  <Projects />
+  <Capabilities />
+  <BlogPreview />
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start mb-20">
+    <Experience />
+    <Stack />
+  </div>
   <Contact />
 </BaseLayout>
