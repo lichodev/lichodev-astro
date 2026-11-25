@@ -15,7 +15,7 @@ const posts = (await getCollection("blog")).sort(
       {
         posts.map((post) => (
           <article class="flex gap-4 rounded-2xl border border-text-200 dark:border-text-800 bg-background-50 dark:bg-background-900 p-4">
-            <a href={`/blog/${post.slug}/`} class="shrink-0">
+            <a href={`/blog/${post.id}/`} class="shrink-0">
               <img
                 class="rounded-lg w-[120px] h-[80px] object-cover"
                 width={120}
@@ -24,7 +24,7 @@ const posts = (await getCollection("blog")).sort(
                 alt={post.data.title}
               />
             </a>
-            <a href={`/blog/${post.slug}/`} class="min-w-0">
+            <a href={`/blog/${post.id}/`} class="min-w-0">
               <h3 class="font-bold mb-1">{post.data.title}</h3>
               <p class="font-mono text-xs text-text-600 dark:text-text-400 mb-1.5">
                 <FormattedDate date={post.data.pubDate} />
