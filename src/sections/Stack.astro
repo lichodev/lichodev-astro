@@ -1,32 +1,20 @@
 ---
 import TechTag from "@/components/TechTag.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
+import { type Lang, useTranslations } from "@/i18n";
 
-const GROUPS = [
-  {
-    label: "Observabilidad y confiabilidad",
-    tags: ["Prometheus", "Grafana", "Loki", "Nagios"],
-  },
-  {
-    label: "Virtualización y contenedores",
-    tags: ["Kubernetes", "Proxmox VE", "Docker"],
-  },
-  {
-    label: "Redes",
-    tags: ["MikroTik / RouterOS", "OSPF", "BGP", "RIP", "IPv6 / túneles", "VLANs"],
-  },
-  {
-    label: "Sistemas, CI/CD e integraciones",
-    tags: ["Linux", "HA clustering", "Bash", "DNS", "GitLab CI/CD", "Git", "APIs (Moodle, SIU)"],
-  },
-];
+interface Props {
+  lang: Lang;
+}
+
+const t = useTranslations(Astro.props.lang);
 ---
 
 <section id="stack">
-  <SectionHeader title="Stack" />
-  <div class="flex flex-col gap-[18px]">
+  <SectionHeader title={t.stack.title} />
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     {
-      GROUPS.map((group) => (
+      t.stack.groups.map((group) => (
         <div class="rounded-2xl border border-text-200 dark:border-text-800 bg-background-50 dark:bg-background-900 p-5">
           <div class="font-mono text-xs tracking-[.06em] uppercase text-primary-500 mb-3.5">
             {group.label}

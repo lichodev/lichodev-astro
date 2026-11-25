@@ -2,36 +2,48 @@
 import BaseHead from "@/components/BaseHead.astro";
 import Footer from "@/components/Footer.astro";
 import SiteHeader from "@/components/SiteHeader.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+import { SITE_TITLE } from "@/consts";
+import { DEFAULT_LANG, type Lang, useTranslations } from "@/i18n";
 
 interface Props {
+  lang?: Lang;
   title?: string;
   description?: string;
   wide?: boolean;
+  /** Rutas equivalentes en cada idioma, para los <link hreflang>. */
+  alternates?: Record<Lang, string>;
 }
 
-const { title, description, wide = false } = Astro.props;
+const {
+  lang = DEFAULT_LANG,
+  title,
+  description,
+  wide = false,
+  alternates,
+} = Astro.props;
+const t = useTranslations(lang);
 
 const mainWidth = wide ? "max-w-[1080px]" : "max-w-[750px]";
 ---
 
 <!doctype html>
 <html
-  lang="es"
+  lang={lang}
   class="font-sans bg-background-50 text-text-900 dark:bg-background-950 dark:text-text-50"
 >
   <head>
     <BaseHead
-      title={title ? `${title} - ${SITE_TITLE}` : SITE_TITLE}
-      description={description ?? SITE_DESCRIPTION}
+      title={title ?? SITE_TITLE}
+      description={description ?? t.meta.description}
+      ogLocale={t.meta.ogLocale}
+      alternates={alternates}
     />
   </head>
   <body>
-    <SiteHeader />
+    <SiteHeader lang={lang} alternates={alternates} />
     <main class=`m-auto ${mainWidth} px-6 lg:px-0 mt-10`>
       <slot />
     </main>
-    <Footer />
-
+    <Footer lang={lang} />
   </body>
 </html>

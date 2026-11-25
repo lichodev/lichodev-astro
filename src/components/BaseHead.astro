@@ -2,16 +2,25 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import "@/styles/global.css";
+import { DEFAULT_LANG, type Lang } from "@/i18n";
 
 interface Props {
   title: string;
   description: string;
   image?: string;
+  ogLocale?: string;
+  alternates?: Record<Lang, string>;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/og-bg.png" } = Astro.props;
+const {
+  title,
+  description,
+  image = "/og-bg.png",
+  ogLocale = "es_AR",
+  alternates,
+} = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -30,6 +39,20 @@ const { title, description, image = "/og-bg.png" } = Astro.props;
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
+{
+  alternates && (
+    <>
+      {Object.entries(alternates).map(([lang, path]) => (
+        <link rel="alternate" hreflang={lang} href={new URL(path, Astro.site)} />
+      ))}
+      <link
+        rel="alternate"
+        hreflang="x-default"
+        href={new URL(alternates[DEFAULT_LANG], Astro.site)}
+      />
+    </>
+  )
+}
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -38,6 +61,7 @@ const { title, description, image = "/og-bg.png" } = Astro.props;
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
+<meta property="og:locale" content={ogLocale} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

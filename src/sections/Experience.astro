@@ -1,101 +1,43 @@
 ---
-import JobTimeline from "@/components/JobTimeline.astro";
 import SectionHeader from "@/components/SectionHeader.astro";
+import TechTag from "@/components/TechTag.astro";
+import Credentials from "@/sections/Credentials.astro";
+import { type Lang, useTranslations } from "@/i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
-<section id="experiencia">
-  <SectionHeader title="Experiencia" />
-
-  <JobTimeline
-    job="Centro de Datos y Comunicaciones"
-    at="UNICEN — Rectorado"
-    atUrl="https://www.unicen.edu.ar"
-    date="octubre 2023 — actualidad"
-  >
-    <ul>
-      <li>
-        Soporte y monitoreo de la red que vincula el centro de datos con
-        distintas dependencias.
-      </li>
-      <li>
-        Opero entornos virtualizados y en contenedores, cubriendo el ciclo de
-        vida completo de los servicios.
-      </li>
-      <li>
-        Monitoreo con Prometheus, Grafana, Loki y Nagios: métricas, tableros y
-        logs centralizados.
-      </li>
-      <li>
-        CI/CD sobre GitLab: compilación, testing y despliegue de aplicaciones
-        internas.
-      </li>
-      <li>
-        Routers de frontera MikroTik: ruteo, VLANs y direccionamiento IPv4/IPv6.
-      </li>
-    </ul>
-  </JobTimeline>
-
-  <JobTimeline
-    job="Infraestructura de TI"
-    at="ábaco informática"
-    {/* date="septiembre 2025 — actualidad" */}
-  >
-    <ul>
-      <li>
-        Administro la infraestructura de TI de la empresa: servidores, servicios
-        y conectividad.
-      </li>
-      <li>
-        Mantenimiento, actualización y hardening sobre servidores Linux y
-        entornos virtualizados.
-      </li>
-      <li>
-        Documento configuraciones y procedimientos para estandarizar la
-        respuesta ante incidentes.
-      </li>
-    </ul>
-  </JobTimeline>
-
-  <JobTimeline
-    job="Ayudante de cátedra"
-    at="UNICEN — Facultad de Ciencias Exactas"
-    atUrl="https://www.unicen.edu.ar"
-    date="marzo 2024 — actualidad"
-  >
-    <ul>
-      <li>
-        Diseño de Redes Distribuidas: IPv4 con ruteo dinámico OSPF, RIP y BGP,
-        redes y túneles IPv6.
-      </li>
-      <li>
-        Programación 1: fundamentos, estructuras de control, funciones y
-        estructuras de datos.
-      </li>
-      <li>
-        Elaboro material práctico y acompaño a estudiantes en la resolución de
-        laboratorios.
-      </li>
-    </ul>
-  </JobTimeline>
-
-  <JobTimeline
-    job="Administrador de Sistemas"
-    at="Universidad Nacional del Sur"
-    date="marzo 2025 — diciembre 2025"
-  >
-    <ul>
-      <li>
-        Administré entornos Kubernetes para el despliegue y operación de los
-        sistemas SIU.
-      </li>
-      <li>
-        Implementé integraciones entre Moodle y sistemas propios, automatizando
-        el intercambio de datos.
-      </li>
-      <li>
-        Definí procedimientos de despliegue reproducibles para reducir tiempos
-        de puesta en producción.
-      </li>
-    </ul>
-  </JobTimeline>
+<section id="experiencia" class="mb-16">
+  <SectionHeader title={t.experience.title} />
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    {
+      t.experience.cases.map((item) => (
+        <article class="flex flex-col rounded-2xl border border-text-200 dark:border-text-800 bg-background-50 dark:bg-background-900 p-6">
+          <div class="font-mono text-xs tracking-[.06em] uppercase text-primary-500 mb-1">
+            {item.area}
+          </div>
+          <div class="text-xs text-text-600 dark:text-text-400 mb-3">
+            {item.sector}
+          </div>
+          <h3 class="text-lg font-bold leading-snug mb-2 text-pretty">
+            {item.title}
+          </h3>
+          <p class="text-sm leading-relaxed text-text-600 dark:text-text-400 mb-5 text-pretty">
+            {item.body}
+          </p>
+          <div class="mt-auto flex flex-wrap gap-1.5">
+            {item.tags.map((tag) => (
+              <TechTag variant="outline">{tag}</TechTag>
+            ))}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+  <Credentials lang={lang} />
 </section>

@@ -1,15 +1,30 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
+import { homePath, type Lang, otherLang, useTranslations } from "@/i18n";
+
+interface Props {
+  lang: Lang;
+  /** Ruta equivalente en cada idioma; si no hay, el selector lleva al home del otro idioma. */
+  alternates?: Record<Lang, string>;
+}
+
+const { lang, alternates } = Astro.props;
+const t = useTranslations(lang);
+const home = homePath(lang);
+const switchLang = otherLang(lang);
+const switchHref = alternates?.[switchLang] ?? homePath(switchLang);
+
+const linkClass =
+  "text-sm text-text-600 dark:text-text-400 hover:text-text-950 dark:hover:text-text-50";
 ---
 
 <header
   class="max-w-[1080px] mx-auto px-6 lg:px-0 pt-7 mb-[72px] flex justify-between items-center gap-4 flex-wrap"
 >
-  <a href="/" class="flex items-center gap-3">
+  <a href={home} class="flex items-center gap-3">
     <img
       class="w-[34px] h-[34px] rounded-full border border-text-200 dark:border-text-800 object-cover"
       src="https://avatars.githubusercontent.com/u/24478906"
-      alt="Foto de perfil de lichodev de GitHub"
+      alt=""
       aria-hidden="true"
     />
     <span class="font-mono text-sm text-text-600 dark:text-text-400"
@@ -17,25 +32,17 @@ import HeaderLink from "./HeaderLink.astro";
     >
   </a>
   <nav class="flex items-center gap-5 flex-wrap">
+    <a href={home} class={linkClass}>{t.nav.home}</a>
+    <a href={`${home}#servicios`} class={linkClass}>{t.nav.services}</a>
+    <a href={`${home}#experiencia`} class={linkClass}>{t.nav.experience}</a>
+    <a href="#contacto" class={linkClass}>{t.nav.contact}</a>
     <a
-      href="/"
-      class="text-sm text-text-600 dark:text-text-400 hover:text-text-950 dark:hover:text-text-50"
-      >Inicio</a
-    >
-    <a
-      href="/#experiencia"
-      class="text-sm text-text-600 dark:text-text-400 hover:text-text-950 dark:hover:text-text-50"
-      >Experiencia</a
-    >
-    <a
-      href="#contacto"
-      class="text-sm text-text-600 dark:text-text-400 hover:text-text-950 dark:hover:text-text-50"
-      >Contacto</a
-    >
-    <HeaderLink
-      href="/blog"
-      class="text-sm text-text-600 dark:text-text-400 hover:text-text-950 dark:hover:text-text-50"
-      >Blog</HeaderLink
+      href={switchHref}
+      hreflang={switchLang}
+      lang={switchLang}
+      aria-label={t.nav.switchLabel}
+      class="font-mono text-xs font-semibold px-2 py-1 rounded-md border border-text-200 dark:border-text-800 text-text-600 dark:text-text-400 hover:border-text-400 dark:hover:border-text-600"
+      >{t.nav.switchText}</a
     >
   </nav>
 </header>

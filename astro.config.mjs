@@ -9,7 +9,19 @@ export default defineConfig({
   site: "https://www.lichodev.com.ar",
   // Las páginas siguen siendo estáticas; el adaptador solo sirve las Actions como función.
   adapter: vercel(),
-  integrations: [mdx(), sitemap()],
+  i18n: {
+    locales: ["es", "en"],
+    defaultLocale: "es",
+    routing: { prefixDefaultLocale: false },
+  },
+  integrations: [
+    mdx(),
+    sitemap({
+      i18n: { defaultLocale: "es", locales: { es: "es-AR", en: "en" } },
+      // El blog está oculto mientras no haya publicaciones: no se indexa.
+      filter: (page) => !page.includes("/blog/"),
+    }),
+  ],
   env: {
     schema: {
       RESEND_API_KEY: envField.string({ context: "server", access: "secret" }),

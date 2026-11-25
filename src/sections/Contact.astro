@@ -3,6 +3,13 @@ import Button from "@/components/Button.astro";
 import GitHubIcon from "@/components/icons/GitHubIcon.astro";
 import LinkedinIcon from "@/components/icons/LinkedinIcon.astro";
 import MailboxIcon from "@/components/icons/MailboxIcon.astro";
+import { type Lang, useTranslations } from "@/i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const t = useTranslations(Astro.props.lang);
 
 const inputClasses =
   "bg-background-100 border border-text-200 rounded-lg px-3.5 py-2.5 text-sm font-sans text-text-950 outline-hidden focus:border-accent-500";
@@ -15,8 +22,7 @@ const inputClasses =
       <p
         class="text-[17px] leading-relaxed text-text-600 max-w-[420px] mb-5 text-pretty"
       >
-        Si tenés un proyecto de infraestructura, redes o automatización — o
-        simplemente querés charlar de Kubernetes — escribime.
+        {t.contact.intro}
       </p>
       <div
         class="flex flex-col gap-2.5 font-mono text-[13px] [&_svg]:w-3.5 [&_svg]:h-3.5"
@@ -45,37 +51,43 @@ const inputClasses =
       class="rounded-2xl border border-text-200 bg-background-50 p-6"
     >
       <h2 class="text-2xl font-bold mb-5 pb-3 border-b border-text-200">
-        Contacto
+        {t.contact.title}
       </h2>
-      <form id="contact-form" class="flex flex-col gap-4">
+      <form
+        id="contact-form"
+        class="flex flex-col gap-4"
+        data-sending={t.contact.sending}
+        data-error-input={t.contact.errorInput}
+        data-error-forbidden={t.contact.errorForbidden}
+        data-error-fallback={t.contact.errorFallback}
+      >
         <label class="flex flex-col gap-1.5">
-          <span class="text-sm text-text-600">Nombre</span>
+          <span class="text-sm text-text-600">{t.contact.name}</span>
           <input
             name="name"
             type="text"
             required
-            placeholder="Tu nombre"
+            placeholder={t.contact.namePlaceholder}
             class={inputClasses}
           />
         </label>
         <label class="flex flex-col gap-1.5">
-          <span class="text-sm text-text-600">Email</span>
+          <span class="text-sm text-text-600">{t.contact.email}</span>
           <input
             name="email"
             type="email"
             required
-            placeholder="tu@email.com"
+            placeholder={t.contact.emailPlaceholder}
             class={inputClasses}
           />
         </label>
         <label class="flex flex-col gap-1.5">
-          <span class="text-sm text-text-600">Mensaje</span
-          >
+          <span class="text-sm text-text-600">{t.contact.message}</span>
           <textarea
             name="message"
             rows="4"
             required
-            placeholder="Contame en qué puedo ayudarte..."
+            placeholder={t.contact.messagePlaceholder}
             class={`${inputClasses} resize-y`}></textarea>
         </label>
         <input
@@ -87,7 +99,7 @@ const inputClasses =
           class="hidden"
         />
         <div>
-          <Button variant="primary" type="submit">Enviar</Button>
+          <Button variant="primary" type="submit">{t.contact.submit}</Button>
         </div>
         <p id="contact-error" role="alert" class="hidden text-sm text-accent-700">
         </p>
@@ -95,10 +107,10 @@ const inputClasses =
 
       <div id="contact-sent" class="hidden flex-col gap-2.5 py-6">
         <div class="text-[17px] font-bold text-primary-500">
-          Mensaje enviado
+          {t.contact.sentTitle}
         </div>
         <div class="text-sm text-text-600">
-          Gracias por escribir. Te respondo a la brevedad.
+          {t.contact.sentBody}
         </div>
       </div>
     </div>
@@ -153,8 +165,13 @@ const inputClasses =
     errorBox.classList.remove("hidden");
   }
 
-  const FALLBACK_ERROR =
-    "No se pudo enviar el mensaje. Escribime directamente a marchionni.lisandro@gmail.com.";
+  // Textos traducidos que el servidor deja en el formulario (data-*).
+  const messages = {
+    sending: form?.dataset.sending ?? "…",
+    input: form?.dataset.errorInput ?? "",
+    forbidden: form?.dataset.errorForbidden ?? "",
+    fallback: form?.dataset.errorFallback ?? "",
+  };
 
   form?.addEventListener("focusin", () => void loadRecaptcha().catch(() => {}), {
     once: true,
@@ -167,7 +184,7 @@ const inputClasses =
     const label = submit?.textContent ?? "Enviar";
     if (submit) {
       submit.disabled = true;
-      submit.textContent = "Enviando…";
+      submit.textContent = messages.sending;
     }
 
     let error: unknown;
@@ -186,15 +203,11 @@ const inputClasses =
 
     if (error) {
       if (isInputError(error as never)) {
-        showError(
-          "Revisá los campos: el email tiene que ser válido y el mensaje de al menos 10 caracteres.",
-        );
+        showError(messages.input);
       } else if ((error as { code?: string }).code === "FORBIDDEN") {
-        showError(
-          "No pudimos verificar que no seas un bot. Probá de nuevo o escribime a marchionni.lisandro@gmail.com.",
-        );
+        showError(messages.forbidden);
       } else {
-        showError(FALLBACK_ERROR);
+        showError(messages.fallback);
       }
       return;
     }

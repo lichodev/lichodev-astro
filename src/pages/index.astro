@@ -1,19 +1,5 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-
-import Hero from "@/sections/Hero.astro";
-import Capabilities from "@/sections/Capabilities.astro";
-import BlogPreview from "@/sections/BlogPreview.astro";
-import Experience from "@/sections/Experience.astro";
-import Stack from "@/sections/Stack.astro";
+import HomePage from "@/components/HomePage.astro";
 ---
 
-<BaseLayout title="Lisandro Marchionni" wide={true}>
-  <Hero />
-  <Capabilities />
-  <BlogPreview />
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-    <Experience />
-    <Stack />
-  </div>
-</BaseLayout>
+<HomePage lang="es" />

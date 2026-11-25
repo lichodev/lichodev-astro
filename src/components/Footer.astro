@@ -1,5 +1,13 @@
 ---
 import Contact from "@/sections/Contact.astro";
+import { homePath, type Lang, useTranslations } from "@/i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const year = new Date().getFullYear();
 ---
@@ -8,12 +16,12 @@ const year = new Date().getFullYear();
 <footer
   class="bg-text-50 text-text-900 [color-scheme:light] p-10 mt-16 mx-auto max-w-[1080px]"
 >
-  <Contact>
+  <Contact lang={lang}>
     <a
       slot="before-text"
-      href={Astro.site}
+      href={homePath(lang)}
       class="flex items-center mb-6"
-      aria-label="Inicio"
+      aria-label={t.footer.homeLabel}
     >
       <img
         src="/lichodev-logo.webp"

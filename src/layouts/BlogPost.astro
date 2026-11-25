@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "@/components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
+import { SITE_TITLE } from "@/consts";
 import ArrowLeft from "@/components/icons/ArrowLeft.astro";
 
 type Props = CollectionEntry<"blog">["data"];
@@ -9,7 +10,11 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, description, pubDate, heroImage, updatedDate } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} wide={true}>
+<BaseLayout
+  title={`${title} - ${SITE_TITLE}`}
+  description={description}
+  wide={true}
+>
   <a href="/blog" class="flex items-center gap-2 mt-16">
     <ArrowLeft /> Todas las publicaciones</a
   >

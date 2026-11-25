@@ -1,15 +1,22 @@
 ---
+import Button from "@/components/Button.astro";
 import SocialBadge from "@/components/SocialBadge.astro";
 import GitHubIcon from "@/components/icons/GitHubIcon.astro";
 import LinkedinIcon from "@/components/icons/LinkedinIcon.astro";
-import MailboxIcon from "@/components/icons/MailboxIcon.astro";
+import { type Lang, useTranslations } from "@/i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const t = useTranslations(Astro.props.lang);
 ---
 
 <section class="mb-20">
   <div
     class="font-mono text-[13px] tracking-[.08em] uppercase text-primary-500 mb-3.5"
   >
-    Site Reliability Engineer
+    {t.hero.eyebrow}
   </div>
   <h1
     class="text-[56px] font-extrabold tracking-tight leading-[1.05] mb-[18px]"
@@ -17,23 +24,21 @@ import MailboxIcon from "@/components/icons/MailboxIcon.astro";
     Lisandro Marchionni
   </h1>
   <p
-    class="text-[19px] leading-[1.6] text-text-600 dark:text-text-400 max-w-[640px] mb-[26px] text-pretty"
+    class="text-[19px] leading-[1.6] text-text-600 dark:text-text-400 max-w-[640px] mb-3 text-pretty"
   >
-    Administro redes con ruteo dinámico y entornos de aplicaciones
-    virtualizados y en contenedores. Me dedico a que los servicios estén
-    disponibles, monitoreados y sean fáciles de volver a levantar.
+    {t.hero.lead}
   </p>
-  <div class="flex flex-wrap gap-2.5">
+  <p class="font-mono text-[13px] text-text-600 dark:text-text-400 mb-[26px]">
+    {t.hero.remote}
+  </p>
+  <div class="flex flex-wrap items-center gap-2.5">
+    <Button variant="primary" href="#contacto">{t.hero.cta}</Button>
     <SocialBadge href="https://github.com/lichodev">
       <GitHubIcon /> GitHub
     </SocialBadge>
     <SocialBadge href="https://www.linkedin.com/in/lisandromarcho">
       <LinkedinIcon />
       LinkedIn
-    </SocialBadge>
-    <SocialBadge href="mailto:marchionni.lisandro@gmail.com">
-      <MailboxIcon />
-      marchionni.lisandro@gmail.com
     </SocialBadge>
   </div>
 </section>

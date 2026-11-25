@@ -1,6 +1,2 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
+// Datos globales del sitio. Los textos traducibles están en src/i18n/.
 export const SITE_TITLE = "lichodev.com.ar";
-export const SITE_DESCRIPTION =
-  "Site Reliability Engineer. Redes, infraestructura virtualizada y automatización.";

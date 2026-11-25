@@ -1,0 +1,29 @@
+---
+// Home compartido entre idiomas: las páginas solo eligen el idioma.
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Hero from "@/sections/Hero.astro";
+import Services from "@/sections/Services.astro";
+import Experience from "@/sections/Experience.astro";
+import Stack from "@/sections/Stack.astro";
+import { homePath, type Lang, useTranslations } from "@/i18n";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  lang={lang}
+  title={t.meta.title}
+  description={t.meta.description}
+  wide={true}
+  alternates={{ es: homePath("es"), en: homePath("en") }}
+>
+  <Hero lang={lang} />
+  <Services lang={lang} />
+  <Experience lang={lang} />
+  <Stack lang={lang} />
+</BaseLayout>
