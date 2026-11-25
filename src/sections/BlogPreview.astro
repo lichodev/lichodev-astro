@@ -1,19 +1,18 @@
 ---
 import { getCollection } from "astro:content";
 import FormattedDate from "@/components/FormattedDate.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 const latest = posts[0];
 ---
 
 {
   latest && (
-    <section class="mb-20">
-      <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-text-200 dark:border-text-800">
-        Blog
-      </h2>
+    <section class="mb-16">
+      <SectionHeader title="Blog" />
       <a
         href={`/blog/${latest.slug}/`}
         class="block rounded-2xl border border-text-200 dark:border-text-800 bg-background-50 dark:bg-background-900 p-5 transition-colors hover:border-accent-400 dark:hover:border-accent-500"

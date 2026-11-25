@@ -3,17 +3,14 @@ import Button from "@/components/Button.astro";
 import GitHubIcon from "@/components/icons/GitHubIcon.astro";
 import LinkedinIcon from "@/components/icons/LinkedinIcon.astro";
 import MailboxIcon from "@/components/icons/MailboxIcon.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
 
 const inputClasses =
   "bg-background-100 dark:bg-background-950 border border-text-200 dark:border-text-800 rounded-lg px-3.5 py-2.5 text-sm font-sans text-text-950 dark:text-text-50 outline-none focus:border-accent-500 dark:focus:border-accent-400";
 ---
 
 <section id="contacto">
-  <h2
-    class="text-2xl font-bold mb-6 pb-3 border-b border-text-200 dark:border-text-800"
-  >
-    Contacto
-  </h2>
+  <SectionHeader title="Contacto" />
 
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 items-start">
     <div>

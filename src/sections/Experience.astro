@@ -1,16 +1,13 @@
 ---
 import JobTimeline from "@/components/JobTimeline.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
 ---
 
 <section id="experiencia">
-  <h2
-    class="text-2xl font-bold mb-7 pb-3 border-b border-text-200 dark:border-text-800"
-  >
-    Experiencia
-  </h2>
+  <SectionHeader title="Experiencia" />
 
   <JobTimeline
-    job="Auxiliar de Soporte TI — Centro de Datos y Comunicaciones"
+    job="Centro de Datos y Comunicaciones"
     at="UNICEN — Rectorado"
     atUrl="https://www.unicen.edu.ar"
     date="octubre 2023 — actualidad"
@@ -33,21 +30,23 @@ import JobTimeline from "@/components/JobTimeline.astro";
         internas.
       </li>
       <li>
-        Routers de frontera MikroTik: ruteo, VLANs y direccionamiento
-        IPv4/IPv6.
+        Routers de frontera MikroTik: ruteo, VLANs y direccionamiento IPv4/IPv6.
       </li>
     </ul>
   </JobTimeline>
 
   <JobTimeline
-    job="Administrador de Infraestructura de TI"
+    job="Infraestructura de TI"
     at="ábaco informática"
+    <!--
     date="septiembre 2025 — actualidad"
+    --
   >
+    >
     <ul>
       <li>
-        Administro la infraestructura de TI de la empresa: servidores,
-        servicios y conectividad.
+        Administro la infraestructura de TI de la empresa: servidores, servicios
+        y conectividad.
       </li>
       <li>
         Mantenimiento, actualización y hardening sobre servidores Linux y
@@ -76,8 +75,8 @@ import JobTimeline from "@/components/JobTimeline.astro";
         estructuras de datos.
       </li>
       <li>
-        Elaboro material práctico y acompaño a estudiantes en la resolución
-        de laboratorios.
+        Elaboro material práctico y acompaño a estudiantes en la resolución de
+        laboratorios.
       </li>
     </ul>
   </JobTimeline>
@@ -93,12 +92,12 @@ import JobTimeline from "@/components/JobTimeline.astro";
         sistemas SIU.
       </li>
       <li>
-        Implementé integraciones entre Moodle y sistemas propios,
-        automatizando el intercambio de datos.
+        Implementé integraciones entre Moodle y sistemas propios, automatizando
+        el intercambio de datos.
       </li>
       <li>
-        Definí procedimientos de despliegue reproducibles para reducir
-        tiempos de puesta en producción.
+        Definí procedimientos de despliegue reproducibles para reducir tiempos
+        de puesta en producción.
       </li>
     </ul>
   </JobTimeline>

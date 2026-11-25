@@ -22,7 +22,6 @@ const posts = (await getCollection("blog")).sort(
                 height={80}
                 src={post.data.heroImage}
                 alt={post.data.title}
-                transition:name="head"
               />
             </a>
             <a href={`/blog/${post.slug}/`} class="min-w-0">

@@ -1,5 +1,6 @@
 ---
 import TechTag from "@/components/TechTag.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
 
 const GROUPS = [
   {
@@ -22,11 +23,7 @@ const GROUPS = [
 ---
 
 <section id="stack">
-  <h2
-    class="text-2xl font-bold mb-6 pb-3 border-b border-text-200 dark:border-text-800"
-  >
-    Stack
-  </h2>
+  <SectionHeader title="Stack" />
   <div class="flex flex-col gap-[18px]">
     {
       GROUPS.map((group) => (
