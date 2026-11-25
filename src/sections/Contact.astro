@@ -78,12 +78,19 @@ const inputClasses =
             placeholder="Contame en qué puedo ayudarte..."
             class={`${inputClasses} resize-y`}></textarea>
         </label>
+        <input
+          name="website"
+          type="text"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+          class="hidden"
+        />
         <div>
           <Button variant="primary" type="submit">Enviar</Button>
         </div>
-        <span class="text-xs text-text-600">
-          Formulario de demostración — no envía nada todavía.
-        </span>
+        <p id="contact-error" role="alert" class="hidden text-sm text-accent-700">
+        </p>
       </form>
 
       <div id="contact-sent" class="hidden flex-col gap-2.5 py-6">
@@ -99,11 +106,99 @@ const inputClasses =
 </section>
 
 <script>
-  const form = document.getElementById("contact-form");
-  const sent = document.getElementById("contact-sent");
+  import { actions, isInputError } from "astro:actions";
+  import { RECAPTCHA_SITE_KEY } from "astro:env/client";
 
-  form?.addEventListener("submit", (event) => {
+  type Grecaptcha = {
+    ready: (callback: () => void) => void;
+    execute: (siteKey: string, options: { action: string }) => Promise<string>;
+  };
+
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const sent = document.getElementById("contact-sent");
+  const errorBox = document.getElementById("contact-error");
+  const submit = form?.querySelector<HTMLButtonElement>("button[type=submit]");
+
+  // El script de reCAPTCHA se carga recién cuando alguien usa el formulario,
+  // para no sumarlo a todas las páginas (el formulario está en el footer).
+  let recaptchaLoading: Promise<Grecaptcha> | undefined;
+
+  function loadRecaptcha(): Promise<Grecaptcha> {
+    recaptchaLoading ??= new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`;
+      script.async = true;
+      script.onload = () => {
+        const grecaptcha = (window as unknown as { grecaptcha: Grecaptcha })
+          .grecaptcha;
+        grecaptcha.ready(() => resolve(grecaptcha));
+      };
+      script.onerror = () => {
+        recaptchaLoading = undefined;
+        reject(new Error("No se pudo cargar reCAPTCHA"));
+      };
+      document.head.append(script);
+    });
+    return recaptchaLoading;
+  }
+
+  async function getRecaptchaToken(): Promise<string> {
+    const grecaptcha = await loadRecaptcha();
+    return grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: "contact" });
+  }
+
+  function showError(message: string) {
+    if (!errorBox) return;
+    errorBox.textContent = message;
+    errorBox.classList.remove("hidden");
+  }
+
+  const FALLBACK_ERROR =
+    "No se pudo enviar el mensaje. Escribime directamente a marchionni.lisandro@gmail.com.";
+
+  form?.addEventListener("focusin", () => void loadRecaptcha().catch(() => {}), {
+    once: true,
+  });
+
+  form?.addEventListener("submit", async (event) => {
     event.preventDefault();
+    errorBox?.classList.add("hidden");
+
+    const label = submit?.textContent ?? "Enviar";
+    if (submit) {
+      submit.disabled = true;
+      submit.textContent = "Enviando…";
+    }
+
+    let error: unknown;
+    try {
+      const data = new FormData(form);
+      data.set("recaptchaToken", await getRecaptchaToken());
+      ({ error } = await actions.contact(data));
+    } catch {
+      error = new Error("recaptcha");
+    }
+
+    if (submit) {
+      submit.disabled = false;
+      submit.textContent = label;
+    }
+
+    if (error) {
+      if (isInputError(error as never)) {
+        showError(
+          "Revisá los campos: el email tiene que ser válido y el mensaje de al menos 10 caracteres.",
+        );
+      } else if ((error as { code?: string }).code === "FORBIDDEN") {
+        showError(
+          "No pudimos verificar que no seas un bot. Probá de nuevo o escribime a marchionni.lisandro@gmail.com.",
+        );
+      } else {
+        showError(FALLBACK_ERROR);
+      }
+      return;
+    }
+
     form.classList.add("hidden");
     sent?.classList.remove("hidden");
     sent?.classList.add("flex");
