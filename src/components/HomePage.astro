@@ -4,7 +4,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Hero from "@/sections/Hero.astro";
 import Services from "@/sections/Services.astro";
 import Experience from "@/sections/Experience.astro";
-import Stack from "@/sections/Stack.astro";
 import { homePath, type Lang, useTranslations } from "@/i18n";
 
 interface Props {
@@ -25,5 +24,4 @@ const t = useTranslations(lang);
   <Hero lang={lang} />
   <Services lang={lang} />
   <Experience lang={lang} />
-  <Stack lang={lang} />
 </BaseLayout>

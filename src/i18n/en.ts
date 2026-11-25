@@ -4,9 +4,9 @@ import type { UI } from "./es";
 export const en: UI = {
   meta: {
     title:
-      "Lisandro Marchionni — Networking, virtualization & training for SMBs and dev teams",
+      "Lisandro Marchionni — Networking, virtualization & training for businesses and dev teams",
     description:
-      "Design, implementation and maintenance of networks and virtualized infrastructure for SMBs and development teams, with built-in monitoring. Remote service for LatAm and worldwide.",
+      "Multi-site networks on MikroTik, Proxmox and Kubernetes clusters, and Prometheus/Grafana monitoring for businesses and development teams. Remote work in English and Spanish.",
     ogLocale: "en_US",
   },
   nav: {
@@ -18,53 +18,30 @@ export const en: UI = {
     switchText: "ES",
   },
   hero: {
-    eyebrow: "Networking · Virtualization · Monitoring",
-    lead: "Design, implementation and maintenance of infrastructure for SMBs and development teams: reliable networks, virtualized and containerized servers, with built-in monitoring.",
+    headline: "Reliable infrastructure for businesses and development teams.",
+    lead: "Multi-site networks, Proxmox/Kubernetes clusters and Grafana monitoring, from the border router to each application.",
     cta: "Free first consultation",
-    remote: "Remote service for LatAm and worldwide.",
   },
   services: {
     title: "Services",
-    monitoringBadge: "Monitoring included",
+    monitoringNote:
+      "Networking and virtualization include monitoring with Prometheus and Grafana.",
     items: [
       {
         label: "Networking",
-        title: "Reliable connectivity across offices, sites and the cloud",
-        body: "Network design, implementation and support, so connectivity stops being a problem.",
-        includes: [
-          "MikroTik / RouterOS",
-          "VLANs and segmentation",
-          "VPNs and tunnels",
-          "OSPF / BGP dynamic routing",
-          "IPv6",
-          "Multi-site interconnection",
-        ],
-        monitoring: true,
+        body: "Sites, offices and cloud linked over VPN, with dynamic routing, VLAN segmentation and support once in production.",
       },
       {
         label: "Virtualization",
-        title: "Virtualized and containerized infrastructure",
-        body: "Server consolidation and application deployment with high availability and reproducible processes.",
-        includes: [
-          "Proxmox VE clusters",
-          "Migration to Docker and Kubernetes",
-          "High availability",
-          "Backup and recovery",
-          "CI/CD deployments",
-        ],
-        monitoring: true,
+        body: "Physical servers consolidated into Proxmox clusters, applications on Docker and Kubernetes, and automated CI/CD deployments.",
       },
       {
         label: "Training",
-        title: "Technical teams with sound judgment",
-        body: "Hands-on training in network design, dynamic routing and virtualization, with labs and original material, backed by university teaching experience.",
-        includes: [
-          "Hands-on labs",
-          "Network design and dynamic routing",
-          "Virtualization and containers",
-          "Remote delivery",
-        ],
-        monitoring: false,
+        body: "Hands-on courses in network design, dynamic routing and virtualization, with labs and original material, backed by university teaching experience.",
+      },
+      {
+        label: "Audit",
+        body: "Review of the current network, servers and security, with a report of risks and changes ranked by priority.",
       },
     ],
   },
@@ -72,33 +49,40 @@ export const en: UI = {
     title: "Experience",
     cases: [
       {
-        area: "Multi-site networking",
-        sector: "Education sector",
-        title: "Network linking a data center and 3 remote sites",
-        body: "Border routers, dynamic routing, VLANs and IPv4/IPv6 addressing, with continuous link monitoring.",
-        tags: ["MikroTik", "OSPF", "BGP", "IPv6"],
+        metric: "HA networks",
+        metricLabel: "high availability",
+        title: "Multi-site networks",
+        body: [
+          "Data center connected to remote locations: border routers, VLANs and IPv4/IPv6 addressing, with every link monitored.",
+          "Dynamic routing with OSPF and BGP, so traffic takes another path if a link goes down.",
+        ],
+        logos: ["MikroTik", "Linux"],
       },
       {
-        area: "Data center operations",
-        sector: "Education sector",
-        title: "100+ critical systems in production",
-        body: "Operation of virtualized environments and Kubernetes clusters: full service lifecycle, high availability, hardening and reproducible CI/CD deployments.",
-        tags: ["Proxmox VE", "Kubernetes", "Docker", "GitLab CI/CD"],
+        metric: "100+",
+        metricLabel: "critical systems",
+        title: "Production services on Proxmox and Kubernetes",
+        body: "Full lifecycle of each service: high availability, hardening and CI/CD deployments that repeat without manual steps.",
+        logos: ["Proxmox", "Kubernetes", "Docker"],
       },
       {
-        area: "Integrated monitoring",
-        sector: "Education sector",
-        title: "A single source of truth for 300+ services and devices",
-        body: "Metrics, logs and alerts from networks, servers and applications unified in one platform: a single place to see the state of the infrastructure and catch failures before they reach users.",
-        tags: ["Prometheus", "Grafana", "Loki"],
+        metric: "300+",
+        metricLabel: "services and devices",
+        title: "Network, server and application monitoring in one platform",
+        body: "Metrics, logs and alerts together, to catch failures before they reach users.",
+        logos: ["Prometheus", "Grafana", "Nagios", "NetBox"],
+      },
+      {
+        metric: "Webinars",
+        metricLabel: "training",
+        title: "Webinars on WAFs and GeoIP log tagging",
+        body: "Two webinars for university networks: protecting web applications with a WAF, and tagging logs by geographic location (GeoIP) with the Grafana stack.",
+        logos: ["Grafana", "Loki", "Alloy"],
       },
     ],
-    credentialsTitle: "Education & certifications",
+    credentialsMetric: "Education",
+    credentialsLabel: "degree & certifications",
     credentials: [
-      {
-        title: "University Degree in Computer Network Administration",
-        detail: "University degree · UNICEN",
-      },
       {
         title: "Data Center Network Operations — Advanced Level",
         detail: "LACNIC Campus specialization",
@@ -111,48 +95,16 @@ export const en: UI = {
         image: "/credentials/lacnic-isp.png",
         url: "https://badges.parchment.com/public/assertions/M5lKZ-cATcWYEOCextyyDQ",
       },
-    ],
-  },
-  stack: {
-    title: "Stack",
-    groups: [
       {
-        label: "Observability & reliability",
-        tags: ["Prometheus", "Grafana", "Loki", "Nagios"],
-      },
-      {
-        label: "Virtualization & containers",
-        tags: ["Kubernetes", "Proxmox VE", "Docker"],
-      },
-      {
-        label: "Networking",
-        tags: [
-          "MikroTik / RouterOS",
-          "OSPF",
-          "BGP",
-          "RIP",
-          "IPv6 / tunnels",
-          "VLANs",
-        ],
-      },
-      {
-        label: "Systems, CI/CD & integrations",
-        tags: [
-          "Linux",
-          "HA clustering",
-          "Bash",
-          "DNS",
-          "GitLab CI/CD",
-          "Git",
-          "APIs (Moodle, SIU)",
-        ],
+        title: "University Degree in Computer Network Administration",
+        detail: "University degree · UNICEN",
       },
     ],
   },
   contact: {
     title: "Contact",
     intro:
-      "Free first consultation: a 30-minute call to assess the infrastructure and define next steps.",
+      "Free first consultation: 30 minutes to review the current network or servers and see what to change first.",
     name: "Name",
     namePlaceholder: "Full name",
     email: "Email",

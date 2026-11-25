@@ -1,0 +1,60 @@
+---
+// Logos de marcas en gris (simple-icons y extraLogos). Se renderizan como SVG en el build.
+// Si una marca no tiene logo, se muestra su nombre como texto.
+import {
+  siDocker,
+  siGrafana,
+  siKubernetes,
+  siLinux,
+  siMikrotik,
+  siPrometheus,
+  siProxmox,
+} from "simple-icons";
+import {
+  type BrandLogo,
+  siAlloy,
+  siLoki,
+  siNagios,
+  siNetbox,
+} from "@/components/icons/extraLogos";
+
+const icons: Record<string, BrandLogo> = {
+  MikroTik: siMikrotik,
+  Proxmox: siProxmox,
+  Kubernetes: siKubernetes,
+  Docker: siDocker,
+  Linux: siLinux,
+  Prometheus: siPrometheus,
+  Grafana: siGrafana,
+  Loki: siLoki,
+  Alloy: siAlloy,
+  Nagios: siNagios,
+  NetBox: siNetbox,
+};
+
+interface Props {
+  names: string[];
+}
+
+const { names } = Astro.props;
+---
+
+<ul class="flex flex-wrap items-center gap-5 text-text-400 dark:text-text-600">
+  {
+    names.map((name) => {
+      const logo = icons[name];
+      return (
+        <li>
+          {logo ? (
+            <svg role="img" viewBox={logo.viewBox ?? "0 0 24 24"} class="h-8 w-8 fill-current">
+              <title>{logo.title}</title>
+              <path d={logo.path} />
+            </svg>
+          ) : (
+            <span class="font-mono text-lg font-bold leading-8">{name}</span>
+          )}
+        </li>
+      );
+    })
+  }
+</ul>

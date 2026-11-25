@@ -22,7 +22,8 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.20"
+    "@tailwindcss/typography": "^0.5.20",
+    "simple-icons": "^16.38.1"
   },
   "engines": {
     "node": ">=22.23.4"
