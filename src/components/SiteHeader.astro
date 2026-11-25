@@ -20,16 +20,14 @@ const linkClass =
 <header
   class="max-w-[1080px] mx-auto px-6 lg:px-0 pt-7 mb-[72px] flex justify-between items-center gap-4 flex-wrap"
 >
-  <a href={home} class="flex items-center gap-3">
+  <a href={home} class="flex items-center">
     <img
-      class="w-[34px] h-[34px] rounded-full border border-text-200 dark:border-text-800 object-cover"
-      src="https://avatars.githubusercontent.com/u/24478906"
-      alt=""
-      aria-hidden="true"
+      src="/lichodev-logo.webp"
+      alt="lichodev"
+      width="96"
+      height="60"
+      class="h-[60px] w-auto dark:invert"
     />
-    <span class="font-mono text-sm text-text-600 dark:text-text-400"
-      >lichodev.com.ar</span
-    >
   </a>
   <nav class="flex items-center gap-5 flex-wrap">
     <a href={home} class={linkClass}>{t.nav.home}</a>

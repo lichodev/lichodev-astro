@@ -1,7 +1,6 @@
 ---
 import Button from "@/components/Button.astro";
 import SocialBadge from "@/components/SocialBadge.astro";
-import GitHubIcon from "@/components/icons/GitHubIcon.astro";
 import LinkedinIcon from "@/components/icons/LinkedinIcon.astro";
 import { type Lang, useTranslations } from "@/i18n";
 
@@ -30,9 +29,6 @@ const t = useTranslations(Astro.props.lang);
   </p>
   <div class="flex flex-wrap items-center gap-2.5">
     <Button variant="primary" href="#contacto">{t.hero.cta}</Button>
-    <SocialBadge href="https://github.com/lichodev">
-      <GitHubIcon /> GitHub
-    </SocialBadge>
     <SocialBadge href="https://www.linkedin.com/in/lisandromarcho">
       <LinkedinIcon />
       LinkedIn
