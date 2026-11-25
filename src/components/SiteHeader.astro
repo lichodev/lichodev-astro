@@ -18,7 +18,7 @@ const linkClass =
 ---
 
 <header
-  class="max-w-[1080px] mx-auto px-6 lg:px-0 pt-7 mb-[72px] flex justify-between items-center gap-4 flex-wrap"
+  class="max-w-[1080px] mx-auto px-6 lg:px-0 pt-5 sm:pt-7 mb-12 sm:mb-[72px] flex justify-between items-center gap-x-4 gap-y-3 flex-wrap"
 >
   <a href={home} class="flex items-center">
     <img
@@ -26,11 +26,11 @@ const linkClass =
       alt="lichodev"
       width="96"
       height="60"
-      class="h-[60px] w-auto dark:invert"
+      class="h-12 sm:h-[60px] w-auto dark:invert"
     />
   </a>
-  <nav class="flex items-center gap-5 flex-wrap">
-    <a href={home} class={linkClass}>{t.nav.home}</a>
+  <nav class="flex items-center gap-3 sm:gap-5 flex-wrap">
+    <a href={home} class={`${linkClass} hidden sm:inline`}>{t.nav.home}</a>
     <a href={`${home}#servicios`} class={linkClass}>{t.nav.services}</a>
     <a href={`${home}#experiencia`} class={linkClass}>{t.nav.experience}</a>
     <a href="#contacto" class={linkClass}>{t.nav.contact}</a>

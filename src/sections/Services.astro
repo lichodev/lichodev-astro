@@ -1,5 +1,6 @@
 ---
 import SectionHeader from "@/components/SectionHeader.astro";
+import ServiceIcon, { type ServiceIconName } from "@/components/icons/ServiceIcon.astro";
 import { type Lang, useTranslations } from "@/i18n";
 
 interface Props {
@@ -15,6 +16,10 @@ const t = useTranslations(Astro.props.lang);
     {
       t.services.items.map((service) => (
         <article class="border-t-2 border-primary-500 pt-5">
+          <ServiceIcon
+            name={service.icon as ServiceIconName}
+            class="h-9 w-9 mb-3 text-primary-600 dark:text-primary-500"
+          />
           <h3 class="text-xl font-bold mb-2">{service.label}</h3>
           <p class="leading-relaxed text-text-600 dark:text-text-400 text-pretty">
             {service.body}

@@ -5,7 +5,7 @@ export const es = {
     title:
       "Lisandro Marchionni — Redes, virtualización y capacitación para empresas y equipos de desarrollo",
     description:
-      "Redes multi-sede con MikroTik, clusters Proxmox y Kubernetes, y monitoreo con Prometheus y Grafana para empresas y equipos de desarrollo. Trabajo remoto en español e inglés.",
+      "Redes multi-site con MikroTik, clusters Proxmox y Kubernetes, infraestructura cloud y monitoreo con Prometheus y Grafana para empresas y equipos de desarrollo. Trabajo remoto en español e inglés.",
     ogLocale: "es_AR",
   },
   nav: {
@@ -18,8 +18,16 @@ export const es = {
   },
   hero: {
     headline: "Infraestructura estable para empresas y equipos de desarrollo.",
-    lead: "Redes multi-site, clusters Proxmox/Kubernetes y monitoreo con Grafana, desde el router de frontera hasta cada aplicación.",
+    lead: "Redes multi-site, clusters Proxmox/Kubernetes, infraestructura cloud y monitoreo con Grafana, desde el router de frontera hasta cada aplicación.",
     cta: "Primera consulta sin cargo",
+    diagram: {
+      label:
+        "Diagrama: un datacenter conectado a la nube, a una oficina, una sede y una sucursal, con un camino alternativo entre sitios y monitoreo de toda la red.",
+      datacenter: "datacenter",
+      sites: ["oficina", "sede", "sucursal"],
+      cloud: "nube",
+      monitoring: "monitoreo",
+    },
   },
   services: {
     title: "Servicios",
@@ -28,18 +36,22 @@ export const es = {
     items: [
       {
         label: "Redes",
+        icon: "network",
         body: "Sedes, oficinas y nube conectadas por VPN, con ruteo dinámico, segmentación por VLANs y soporte una vez en producción.",
       },
       {
-        label: "Virtualización",
-        body: "Servidores físicos consolidados en clusters Proxmox, aplicaciones en Docker y Kubernetes, y despliegues automatizados con CI/CD.",
+        label: "Virtualización y cloud",
+        icon: "virtualization",
+        body: "Clusters Proxmox, infraestructura en la nube o híbrida, aplicaciones en Docker y Kubernetes, y despliegues automatizados con CI/CD.",
       },
       {
         label: "Capacitación",
+        icon: "training",
         body: "Cursos prácticos de diseño de redes, ruteo dinámico y virtualización, con laboratorios y material propio, basados en experiencia docente universitaria.",
       },
       {
         label: "Auditoría",
+        icon: "audit",
         body: "Revisión de la red, los servidores y la seguridad actuales, con un informe de riesgos y cambios ordenados por prioridad.",
       },
     ],
@@ -56,6 +68,7 @@ export const es = {
           "Ruteo dinámico con OSPF y BGP, para que el tráfico tome otro camino si un enlace cae.",
         ],
         logos: ["MikroTik", "Linux"],
+        diagram: "multisite",
       },
       {
         metric: "100+",
@@ -63,6 +76,7 @@ export const es = {
         title: "Servicios en producción sobre Proxmox y Kubernetes",
         body: "Ciclo de vida completo de cada servicio: alta disponibilidad, hardening y despliegues con CI/CD que se repiten sin pasos manuales.",
         logos: ["Proxmox", "Kubernetes", "Docker"],
+        diagram: "cluster",
       },
       {
         metric: "300+",
@@ -70,6 +84,7 @@ export const es = {
         title: "Monitoreo de redes, servidores y aplicaciones en una plataforma",
         body: "Métricas, logs y alertas juntos, para detectar fallas antes de que lleguen a los usuarios.",
         logos: ["Prometheus", "Grafana", "Nagios", "NetBox"],
+        diagram: "monitoring",
       },
       {
         metric: "Webinars",
@@ -77,6 +92,7 @@ export const es = {
         title: "Webinars sobre WAF y etiquetado de logs con GeoIP",
         body: "Dos webinars para redes universitarias: protección de aplicaciones web con un WAF, y etiquetado de logs por ubicación geográfica (GeoIP) con el stack de Grafana.",
         logos: ["Grafana", "Loki", "Alloy"],
+        diagram: "geoip",
       },
     ],
     credentialsMetric: "Formación",

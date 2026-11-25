@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
 
 <!-- El footer es siempre claro (también en modo oscuro), por eso su contenido no usa variantes dark: -->
 <footer
-  class="bg-text-50 text-text-900 [color-scheme:light] p-10 mt-16 mx-auto max-w-[1080px]"
+  class="bg-text-50 text-text-900 [color-scheme:light] px-6 py-10 sm:p-10 sm:mt-16 mx-auto max-w-[1080px]"
 >
   <Contact lang={lang}>
     <a
@@ -29,8 +29,8 @@ const year = new Date().getFullYear();
         alt="lichodev Logo"
       />
     </a>
-    <p slot="after-text" class="mt-8 font-mono text-xs text-text-600">
-      © {year} Lisandro Marchionni
-    </p>
   </Contact>
+  <p class="mt-10 font-mono text-xs text-text-600">
+    © {year} Lisandro Marchionni
+  </p>
 </footer>

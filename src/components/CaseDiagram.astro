@@ -1,0 +1,115 @@
+---
+// Esquemas chicos para cada caso de Experiencia. Decorativos: el texto del caso ya los describe.
+export type CaseDiagramName = "multisite" | "cluster" | "monitoring" | "geoip";
+
+interface Props {
+  name: CaseDiagramName;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+
+const box = "fill-background-50 dark:fill-background-950 stroke-text-500";
+const line = "stroke-text-300 dark:stroke-text-700";
+const accent = "stroke-primary-600 dark:stroke-primary-500";
+const accentFill = "fill-primary-600 dark:fill-primary-500";
+---
+
+<svg
+  viewBox="0 0 220 140"
+  fill="none"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+  aria-hidden="true"
+>
+  {
+    name === "multisite" && (
+      <>
+        <g class={line}>
+          <path d="M34 28 110 70M34 112 110 70M186 70H110" />
+          <path d="M34 40v60" stroke-dasharray="4 5" />
+        </g>
+        {[
+          [34, 28],
+          [34, 112],
+          [186, 70],
+        ].map(([x, y]) => (
+          <rect x={x - 18} y={y - 12} width="36" height="24" rx="5" class={box} />
+        ))}
+        <rect x="86" y="46" width="48" height="48" rx="7" class:list={[box, accent]} stroke-width="1.75" />
+        <path d="M96 58h28M96 70h28M96 82h28" class="stroke-text-500" />
+      </>
+    )
+  }
+  {
+    name === "cluster" && (
+      <>
+        <rect x="10" y="14" width="200" height="112" rx="10" class={line} stroke-dasharray="4 5" />
+        {[22, 82, 142].map((x) => (
+          <>
+            <rect x={x} y="30" width="56" height="80" rx="7" class={box} />
+            {[0, 1, 2, 3].map((i) => (
+              <rect
+                x={x + 10 + (i % 2) * 20}
+                y={44 + Math.floor(i / 2) * 24}
+                width="16"
+                height="16"
+                rx="3"
+                class:list={[accent, (x + i) % 3 === 0 && accentFill]}
+              />
+            ))}
+            <path d={`M${x + 10} 98h36`} class="stroke-text-500" />
+          </>
+        ))}
+      </>
+    )
+  }
+  {
+    name === "monitoring" && (
+      <>
+        <g class={line}>
+          <path d="M46 28 C70 28 70 70 92 70M46 70H92M46 112 C70 112 70 70 92 70M128 70h22" />
+        </g>
+        {[28, 70, 112].map((y) => (
+          <rect x="14" y={y - 11} width="32" height="22" rx="5" class={box} />
+        ))}
+        <circle cx="110" cy="70" r="18" class:list={[box, accent]} stroke-width="1.75" />
+        <path d="M102 70h16M110 62v16" class={accent} />
+        <rect x="150" y="38" width="58" height="64" rx="7" class={box} />
+        <polyline points="158,88 170,74 180,80 192,58 200,64" class={accent} stroke-width="1.75" />
+        <path d="M158 50h20" class="stroke-text-500" />
+      </>
+    )
+  }
+  {
+    name === "geoip" && (
+      <>
+        <path d="M62 70h22M136 70h20" class={line} />
+        <path
+          d="M40 34 62 42v24c0 16-10 26-22 32-12-6-22-16-22-32V42Z"
+          class:list={[box, accent]}
+          stroke-width="1.75"
+        />
+        <path d="m31 66 6 6 12-13" class={accent} />
+        <rect x="84" y="40" width="52" height="60" rx="7" class={box} />
+        {[54, 70, 86].map((y) => (
+          <>
+            <path d={`M92 ${y}h18`} class="stroke-text-500" />
+            <rect x="114" y={y - 4} width="14" height="8" rx="4" class:list={[accent, accentFill]} />
+          </>
+        ))}
+        <circle cx="182" cy="70" r="26" class={box} />
+        <path d="M156 70h52M182 44c-10 8-10 44 0 52M182 44c10 8 10 44 0 52" class="stroke-text-500" />
+        {[
+          [172, 60],
+          [194, 66],
+          [178, 82],
+        ].map(([x, y]) => (
+          <circle cx={x} cy={y} r="3" class={accentFill} />
+        ))}
+      </>
+    )
+  }
+</svg>
