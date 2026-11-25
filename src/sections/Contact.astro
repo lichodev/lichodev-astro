@@ -3,19 +3,17 @@ import Button from "@/components/Button.astro";
 import GitHubIcon from "@/components/icons/GitHubIcon.astro";
 import LinkedinIcon from "@/components/icons/LinkedinIcon.astro";
 import MailboxIcon from "@/components/icons/MailboxIcon.astro";
-import SectionHeader from "@/components/SectionHeader.astro";
 
 const inputClasses =
-  "bg-background-100 dark:bg-background-950 border border-text-200 dark:border-text-800 rounded-lg px-3.5 py-2.5 text-sm font-sans text-text-950 dark:text-text-50 outline-hidden focus:border-accent-500 dark:focus:border-accent-400";
+  "bg-background-100 border border-text-200 rounded-lg px-3.5 py-2.5 text-sm font-sans text-text-950 outline-hidden focus:border-accent-500";
 ---
 
 <section id="contacto">
-  <SectionHeader title="Contacto" />
-
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-12 items-start">
     <div>
+      <slot name="before-text" />
       <p
-        class="text-[17px] leading-relaxed text-text-600 dark:text-text-400 max-w-[420px] mb-5 text-pretty"
+        class="text-[17px] leading-relaxed text-text-600 max-w-[420px] mb-5 text-pretty"
       >
         Si tenés un proyecto de infraestructura, redes o automatización — o
         simplemente querés charlar de Kubernetes — escribime.
@@ -40,14 +38,18 @@ const inputClasses =
           ><LinkedinIcon />linkedin.com/in/lisandromarcho</a
         >
       </div>
+      <slot name="after-text" />
     </div>
 
     <div
-      class="rounded-2xl border border-text-200 dark:border-text-800 bg-background-50 dark:bg-background-900 p-6"
+      class="rounded-2xl border border-text-200 bg-background-50 p-6"
     >
+      <h2 class="text-2xl font-bold mb-5 pb-3 border-b border-text-200">
+        Contacto
+      </h2>
       <form id="contact-form" class="flex flex-col gap-4">
         <label class="flex flex-col gap-1.5">
-          <span class="text-sm text-text-600 dark:text-text-400">Nombre</span>
+          <span class="text-sm text-text-600">Nombre</span>
           <input
             name="name"
             type="text"
@@ -57,7 +59,7 @@ const inputClasses =
           />
         </label>
         <label class="flex flex-col gap-1.5">
-          <span class="text-sm text-text-600 dark:text-text-400">Email</span>
+          <span class="text-sm text-text-600">Email</span>
           <input
             name="email"
             type="email"
@@ -67,7 +69,7 @@ const inputClasses =
           />
         </label>
         <label class="flex flex-col gap-1.5">
-          <span class="text-sm text-text-600 dark:text-text-400">Mensaje</span
+          <span class="text-sm text-text-600">Mensaje</span
           >
           <textarea
             name="message"
@@ -79,7 +81,7 @@ const inputClasses =
         <div>
           <Button variant="primary" type="submit">Enviar</Button>
         </div>
-        <span class="text-xs text-text-600 dark:text-text-400">
+        <span class="text-xs text-text-600">
           Formulario de demostración — no envía nada todavía.
         </span>
       </form>
@@ -88,7 +90,7 @@ const inputClasses =
         <div class="text-[17px] font-bold text-primary-500">
           Mensaje enviado
         </div>
-        <div class="text-sm text-text-600 dark:text-text-400">
+        <div class="text-sm text-text-600">
           Gracias por escribir. Te respondo a la brevedad.
         </div>
       </div>

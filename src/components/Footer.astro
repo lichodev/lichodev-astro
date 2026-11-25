@@ -1,5 +1,28 @@
-<footer class="bg-text-50 p-10 mt-16 mx-auto max-w-[1080px]">
-  <a href={Astro.site} class="flex items-center" aria-hidden="true">
-    <img src="/lichodev-logo.webp" class="m-0 h-20" alt="lichodev Logo" />
-  </a>
+---
+import Contact from "@/sections/Contact.astro";
+
+const year = new Date().getFullYear();
+---
+
+<!-- El footer es siempre claro (también en modo oscuro), por eso su contenido no usa variantes dark: -->
+<footer
+  class="bg-text-50 text-text-900 [color-scheme:light] p-10 mt-16 mx-auto max-w-[1080px]"
+>
+  <Contact>
+    <a
+      slot="before-text"
+      href={Astro.site}
+      class="flex items-center mb-6"
+      aria-label="Inicio"
+    >
+      <img
+        src="/lichodev-logo.webp"
+        class="m-0 h-20 mix-blend-multiply"
+        alt="lichodev Logo"
+      />
+    </a>
+    <p slot="after-text" class="mt-8 font-mono text-xs text-text-600">
+      © {year} Lisandro Marchionni
+    </p>
+  </Contact>
 </footer>
